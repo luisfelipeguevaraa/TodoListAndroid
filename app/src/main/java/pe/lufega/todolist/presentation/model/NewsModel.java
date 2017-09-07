@@ -33,9 +33,4 @@ public class NewsModel {
     public void setDetail(String detail) {
         this.detail = detail;
     }
-
-    @Override
-    public String toString() {
-        return title;
-    }
 }

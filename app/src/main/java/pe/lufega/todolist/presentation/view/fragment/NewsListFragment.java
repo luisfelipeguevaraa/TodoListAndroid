@@ -43,6 +43,7 @@ public class NewsListFragment extends Fragment implements NewsListView {
         progressBar = view.findViewById(R.id.progress);
         listView = view.findViewById(R.id.list_view);
 
+
         initUI();
 
         presenter = new NewsListPresenter(this);

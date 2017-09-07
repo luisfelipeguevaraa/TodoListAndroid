@@ -7,6 +7,7 @@ import android.net.NetworkInfo;
 import java.util.List;
 
 import pe.lufega.todolist.data.entity.NewsEntity;
+import pe.lufega.todolist.data.entity.UserEntity;
 import pe.lufega.todolist.data.exception.NetworkException;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -38,6 +39,36 @@ public class RestApiImpl implements RestApi {
         if (hasInternetConnection()) {
             Call<List<NewsEntity>> call = apiService.newsEntityList();
             Response<List<NewsEntity>> response = call.execute();
+            if (response.isSuccessful()) {
+                return response.body();
+            } else {
+                throw new NetworkException("Get News list request failed");
+            }
+        } else {
+            throw new NetworkException("No internet connection");
+        }
+    }
+
+    @Override
+    public UserEntity getUserEntity() throws Exception {
+        if (hasInternetConnection()) {
+            Call<UserEntity> call = apiService.userEntity();
+            Response<UserEntity> response = call.execute();
+            if (response.isSuccessful()) {
+                return response.body();
+            } else {
+                throw new NetworkException("Get News list request failed");
+            }
+        } else {
+            throw new NetworkException("No internet connection");
+        }
+    }
+
+    @Override
+    public UserEntity setUserEntity(UserEntity userEntity) throws Exception {
+        if (hasInternetConnection()) {
+            Call<UserEntity> call = apiService.userEntity(userEntity);
+            Response<UserEntity> response = call.execute();
             if (response.isSuccessful()) {
                 return response.body();
             } else {
