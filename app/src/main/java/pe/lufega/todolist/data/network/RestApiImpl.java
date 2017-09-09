@@ -23,6 +23,8 @@ public class RestApiImpl implements RestApi {
     private final ApiService apiService;
     private final Context context;
 
+    private UserEntity userDatos;
+
     public RestApiImpl(Context context) {
         this.context = context;
 
@@ -64,10 +66,17 @@ public class RestApiImpl implements RestApi {
         }
     }
 
+    public void UpdateUser(String name, String email, String password) {
+        userDatos.setEmail(email);
+        userDatos.setName(email);
+        userDatos.setPassword(email);
+    }
+
+
     @Override
     public UserEntity setUserEntity(UserEntity userEntity) throws Exception {
         if (hasInternetConnection()) {
-            Call<UserEntity> call = apiService.userEntity(userEntity);
+            Call<UserEntity> call = apiService.userEntity(userDatos);
             Response<UserEntity> response = call.execute();
             if (response.isSuccessful()) {
                 return response.body();

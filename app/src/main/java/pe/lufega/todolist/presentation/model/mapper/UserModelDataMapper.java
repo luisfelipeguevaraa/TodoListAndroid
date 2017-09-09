@@ -13,9 +13,8 @@ public class UserModelDataMapper {
     public UserModel transform(User user) {
         UserModel userModel= new UserModel();
         userModel.setName(user.getName());
-        userModel.setMail(user.getMail());
+        userModel.setEmail(user.getEmail());
         userModel.setPassword(user.getPassword());
-        userModel.setToken(user.getToken());
 
         return userModel;
     }

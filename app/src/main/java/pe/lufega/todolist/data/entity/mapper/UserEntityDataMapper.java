@@ -12,9 +12,8 @@ public class UserEntityDataMapper {
     public User transform(UserEntity userEntity) {
         User user = new User();
         user.setName(userEntity.getName());
-        user.setMail(userEntity.getMail());
+        user.setEmail(userEntity.getEmail());
         user.setPassword(userEntity.getPassword());
-        user.setToken(userEntity.getToken());
         return user;
     }
 }

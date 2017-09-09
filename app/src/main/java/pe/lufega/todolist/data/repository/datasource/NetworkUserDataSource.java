@@ -17,11 +17,11 @@ public class NetworkUserDataSource implements UserDataSource {
     @Override
     public UserEntity SetUserEntity(UserEntity userEntity) throws Exception {
         UserEntity user = restApi.setUserEntity(userEntity);
-        return userEntity;
+        return user;
     }
 
     @Override
     public UserEntity GetUserEntity() throws Exception {
-        return null;
+        return restApi.getUserEntity();
     }
 }

@@ -4,9 +4,16 @@ import android.util.Log;
 
 import javax.sql.DataSource;
 
+import pe.lufega.todolist.data.entity.mapper.NewsEntityDataMapper;
+import pe.lufega.todolist.data.entity.mapper.UserEntityDataMapper;
 import pe.lufega.todolist.data.executor.JobExecutor;
+import pe.lufega.todolist.data.repository.NewsDataRepository;
+import pe.lufega.todolist.data.repository.UserDataRepository;
 import pe.lufega.todolist.data.repository.datasource.NewsDataSourceFactory;
+import pe.lufega.todolist.data.repository.datasource.UserDataSourceFactory;
 import pe.lufega.todolist.domain.model.User;
+import pe.lufega.todolist.domain.repository.NewsRepository;
+import pe.lufega.todolist.domain.repository.RepositoryCallback;
 import pe.lufega.todolist.domain.repository.UserRepository;
 import pe.lufega.todolist.domain.usecase.GetUser;
 import pe.lufega.todolist.domain.usecase.SetUser;
@@ -26,9 +33,13 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
     private final UserModelDataMapper userModelDataMapper;
 
 
-    public RegisterPresenter(RegisterView view,String name,String mail,String password ) {
+    public RegisterPresenter(RegisterView view) {
         super(view);
-        this.setUser= new SetUser(name,mail,password, new JobExecutor(), new UIThread());
+
+       UserRepository userRepository = new UserDataRepository(
+                new UserDataSourceFactory(view.context()), new UserEntityDataMapper());
+
+        this.setUser= new SetUser(userRepository,new JobExecutor(), new UIThread());
         this.userModelDataMapper = new UserModelDataMapper();
     }
 
@@ -61,7 +72,9 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
         view.showErrorMessage(message);
     }
 
-    public void setUser() {
+    public void setUser(String name,String email,String password ) {
+
+        setUser.UpdateUser(name,email,password);
         setUser.execute(new UseCase.Callback<User>() {
             @Override
             public void onSuccess(User response) {

@@ -5,8 +5,10 @@ import java.util.List;
 import pe.lufega.todolist.data.entity.NewsEntity;
 import pe.lufega.todolist.data.entity.UserEntity;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by Android on 19/08/2017.
@@ -20,7 +22,7 @@ public interface ApiService {
     Call<List<NewsEntity>> newsEntityList();
 
     @POST("Users")
-    Call<UserEntity> userEntity(UserEntity userEntity);
+    Call<UserEntity> userEntity(@Body UserEntity userEntity);
 
     @GET("Users")
     Call<UserEntity> userEntity();

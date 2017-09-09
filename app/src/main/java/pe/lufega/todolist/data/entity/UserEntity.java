@@ -8,40 +8,31 @@ import io.realm.RealmObject;
 
 public class UserEntity extends RealmObject {
 
-    private String Name;
-    private String Mail;
-    private String Password;
-    private String Token;
+    private String email;
+    private String password;
+    private String name;
 
-    public String getName() {
-        return Name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String user) {
-        Name = user;
-    }
-
-    public String getMail() {
-        return Mail;
-    }
-
-    public void setMail(String mail) {
-        Mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
-    public String getToken() {
-        return Token;
+    public String getName() {
+        return name;
     }
 
-    public void setToken(String token) {
-        Token = token;
+    public void setName(String name) {
+        this.name = name;
     }
 }

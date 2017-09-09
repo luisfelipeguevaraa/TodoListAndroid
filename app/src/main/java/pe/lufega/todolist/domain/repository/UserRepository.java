@@ -8,5 +8,5 @@ import pe.lufega.todolist.domain.model.User;
 
 public interface UserRepository {
 
-    void UserData(RepositoryCallback<User> callback);
+    void setUserData(RepositoryCallback<User> callback);
 }

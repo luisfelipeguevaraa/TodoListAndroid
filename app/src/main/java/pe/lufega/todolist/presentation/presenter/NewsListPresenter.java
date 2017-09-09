@@ -10,6 +10,7 @@ import pe.lufega.todolist.data.repository.NewsDataRepository;
 import pe.lufega.todolist.data.repository.datasource.NewsDataSourceFactory;
 import pe.lufega.todolist.domain.model.News;
 import pe.lufega.todolist.domain.repository.NewsRepository;
+import pe.lufega.todolist.domain.repository.UserRepository;
 import pe.lufega.todolist.domain.usecase.GetNewsList;
 import pe.lufega.todolist.domain.usecase.UseCase;
 import pe.lufega.todolist.presentation.executor.UIThread;

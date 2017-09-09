@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import pe.lufega.todolist.R;
 import pe.lufega.todolist.presentation.model.UserModel;
+import pe.lufega.todolist.presentation.presenter.NewsListPresenter;
+import pe.lufega.todolist.presentation.presenter.RegisterPresenter;
 import pe.lufega.todolist.presentation.view.RegisterView;
 
 /**
@@ -27,6 +29,8 @@ public class RegisterFragment extends Fragment implements RegisterView {
     EditText edtUser;
     EditText edtPassword;
     Button btnRegistrar;
+
+    private RegisterPresenter presenter;
 
 
     public RegisterFragment() {
@@ -44,10 +48,11 @@ public class RegisterFragment extends Fragment implements RegisterView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         progressBar = view.findViewById(R.id.progress_reg);
-        edtMail= view.findViewById(R.id.edt_reg_mail);
-        edtUser= view.findViewById(R.id.edt_reg_user);
-        edtPassword= view.findViewById(R.id.edt_reg_password);
-        btnRegistrar= view.findViewById(R.id.btn_reg_registrar);
+        edtMail = view.findViewById(R.id.edt_reg_mail);
+        edtUser = view.findViewById(R.id.edt_reg_user);
+        edtPassword = view.findViewById(R.id.edt_reg_password);
+        btnRegistrar = view.findViewById(R.id.btn_reg_registrar);
+        presenter = new RegisterPresenter(this);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +84,7 @@ public class RegisterFragment extends Fragment implements RegisterView {
 
     @Override
     public void registerClick(View view) {
-        
-
+        presenter.setUser(edtUser.getText().toString(), edtMail.getText().toString(), edtPassword.getText().toString());
     }
 
     @Override

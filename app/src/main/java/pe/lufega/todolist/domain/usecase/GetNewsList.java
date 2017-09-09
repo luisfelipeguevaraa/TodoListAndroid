@@ -16,7 +16,7 @@ public class GetNewsList extends UseCase<List<News>> {
 
     private final NewsRepository newsRepository;
 
-    public GetNewsList(NewsRepository  newsRepository, ThreadExecutor threadExecutor,
+    public GetNewsList(NewsRepository newsRepository, ThreadExecutor threadExecutor,
                        PostExecutionThread postExecutionThread) {
         super(threadExecutor, postExecutionThread);
         this.newsRepository = newsRepository;
